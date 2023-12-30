@@ -1,0 +1,229 @@
+ITEM 1 : What's Inside?
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter size of array: ");
+        int size = Convert.ToInt32(Console.ReadLine());
+        int[] array = new int[size];
+
+        Console.WriteLine("Enter array values:");
+        for (int i = 0; i < size; i++)
+        {
+            array[i] = Convert.ToInt32(Console.ReadLine());
+        }
+
+        Console.WriteLine(String.Join(", ", array));
+    }
+}
+
+ITEM 2 : The Bare Minimum Pt.2
+
+using System;
+
+class Program
+{
+    static int Min(int[] array, int size)
+    {
+        int min = array[0];
+        for (int i = 1; i < size; i++)
+        {
+            if (array[i] < min)
+            {
+                min = array[i];
+            }
+        }
+        return min;
+    }
+
+    static void Main()
+    {
+        Console.Write("Enter size of array: ");
+        int size = Convert.ToInt32(Console.ReadLine());
+        int[] array = new int[size];
+
+        Console.Write("Enter array values: ");
+        string[] input = Console.ReadLine().Split(' ');
+        for (int i = 0; i < size; i++)
+        {
+            array[i] = Convert.ToInt32(input[i]);
+        }
+
+        Console.WriteLine("Minimum Value in the Array: " + Min(array, size));
+    }
+}
+
+ITEM 3 : Those Greater Than X
+
+using System;
+
+class Program
+{
+    static float SumGreaterThan(float[] array, int size, float x)
+    {
+        float sum = 0;
+        for (int i = 0; i < size; i++)
+        {
+            if (array[i] > x)
+            {
+                sum += array[i];
+            }
+        }
+        return sum;
+    }
+
+    static void Main()
+    {
+        Console.Write("Enter array size: ");
+        int size = Convert.ToInt32(Console.ReadLine());
+        float[] array = new float[size];
+
+        Console.Write("Enter array values: ");
+        string[] input = Console.ReadLine().Split(' ');
+        for (int i = 0; i < size; i++)
+        {
+            array[i] = float.Parse(input[i]);
+        }
+
+        Console.Write("Enter x value: ");
+        float x = float.Parse(Console.ReadLine());
+
+        Console.WriteLine("Sum of values greater than " + x.ToString("0.00") + ": " + SumGreaterThan(array, size, x).ToString("0.00"));
+    }
+}
+
+ITEM 4 : Exclusive for Even
+
+using System;
+
+class Program
+{
+    static void PrintEven(int[] array, int size)
+    {
+        Console.Write("Even values: ");
+        for (int i = 0; i < size; i++)
+        {
+            if (array[i] % 2 == 0)
+            {
+                Console.Write(array[i] + " ");
+            }
+        }
+        Console.WriteLine();
+    }
+
+    static void Main()
+    {
+        Console.Write("Enter size of array: ");
+        int size = Convert.ToInt32(Console.ReadLine());
+        int[] array = new int[size];
+
+        Console.Write("Enter array values: ");
+        string[] input = Console.ReadLine().Split(' ');
+        for (int i = 0; i < size; i++)
+        {
+            array[i] = Convert.ToInt32(input[i]);
+        }
+
+        PrintEven(array, size);
+    }
+}
+
+ITEM 5 : The Odd Elements
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void PrintOdd(int[] arr1, int[] arr2, int s1, int s2)
+    {
+        List<int> oddNumbers = new List<int>();
+
+        for (int i = 0; i < s1; i++)
+        {
+            if (arr1[i] % 2 != 0)
+            {
+                oddNumbers.Add(arr1[i]);
+            }
+        }
+
+        for (int i = 0; i < s2; i++)
+        {
+            if (arr2[i] % 2 != 0)
+            {
+                oddNumbers.Add(arr2[i]);
+            }
+        }
+
+        Console.WriteLine(String.Join(", ", oddNumbers));
+    }
+
+    static void Main()
+    {
+        Console.Write("Enter first array size: ");
+        int s1 = Convert.ToInt32(Console.ReadLine());
+        int[] arr1 = new int[s1];
+
+        Console.Write("Enter second array size: ");
+        int s2 = Convert.ToInt32(Console.ReadLine());
+        int[] arr2 = new int[s2];
+
+        Console.Write("Enter first array values: ");
+        string[] input1 = Console.ReadLine().Split(' ');
+        for (int i = 0; i < s1; i++)
+        {
+            arr1[i] = Convert.ToInt32(input1[i]);
+        }
+
+        Console.Write("Enter second array values: ");
+        string[] input2 = Console.ReadLine().Split(' ');
+        for (int i = 0; i < s2; i++)
+        {
+            arr2[i] = Convert.ToInt32(input2[i]);
+        }
+
+        PrintOdd(arr1, arr2, s1, s2);
+    }
+}
+
+ITEM 6 : Add Within Range
+
+using System;
+
+class Program
+{
+    static int SumAtRange(int[] array, int size, int start, int end)
+    {
+        int sum = 0;
+        for (int i = start - 1; i < end; i++)
+        {
+            sum += array[i];
+        }
+        return sum;
+    }
+
+    static void Main()
+    {
+        Console.Write("Enter size of array: ");
+        int size = Convert.ToInt32(Console.ReadLine());
+        int[] array = new int[size];
+
+        Console.Write("Enter array values: ");
+        string[] input = Console.ReadLine().Split(' ');
+        for (int i = 0; i < size; i++)
+        {
+            array[i] = Convert.ToInt32(input[i]);
+        }
+
+        Console.Write("Enter starting range: ");
+        int start = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter end range: ");
+        int end = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Sum at range: " + SumAtRange(array, size, start, end));
+    }
+}
