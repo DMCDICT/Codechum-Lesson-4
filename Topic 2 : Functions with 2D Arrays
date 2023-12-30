@@ -1,0 +1,289 @@
+ITEM 1 : Show Me the Table!
+
+using System;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.Write("Enter number of rows: ");
+        int rows = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter number of columns: ");
+        int cols = Convert.ToInt32(Console.ReadLine());
+
+        int[,] array = new int[rows, cols];
+
+        for (int i = 0; i < rows; i++)
+        {
+            string[] input = Console.ReadLine().Split(' ');
+
+            for (int j = 0; j < cols; j++)
+            {
+                array[i, j] = Convert.ToInt32(input[j]);
+            }
+        }
+
+        Console.WriteLine("Array Values:");
+        Print2DArray(array, rows, cols);
+    }
+
+    static void Print2DArray(int[,] array, int rows, int cols)
+    {
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                Console.Write(array[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+
+ITEM 2 : The Biggest One (2D Array Version)
+
+using System;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.Write("Enter number of rows: ");
+        int rows = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter number of columns: ");
+        int cols = Convert.ToInt32(Console.ReadLine());
+
+        int[,] array = new int[rows, cols];
+
+        for (int i = 0; i < rows; i++)
+        {
+            string[] input = Console.ReadLine().Split(' ');
+
+            for (int j = 0; j < cols; j++)
+            {
+                array[i, j] = Convert.ToInt32(input[j]);
+            }
+        }
+
+        Console.WriteLine("Maximum Value: " + Max(array, rows, cols));
+    }
+
+    static int Max(int[,] array, int rows, int cols)
+    {
+        int max = array[0, 0];
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                if (array[i, j] > max)
+                {
+                    max = array[i, j];
+                }
+            }
+        }
+
+        return max;
+    }
+}
+
+ITEM 3 : Are You There? (2D Array Version)
+
+using System;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.Write("Enter number of rows: ");
+        int rows = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter number of columns: ");
+        int cols = Convert.ToInt32(Console.ReadLine());
+
+        int[,] array = new int[rows, cols];
+
+        for (int i = 0; i < rows; i++)
+        {
+            string[] input = Console.ReadLine().Split(' ');
+
+            for (int j = 0; j < cols; j++)
+            {
+                array[i, j] = Convert.ToInt32(input[j]);
+            }
+        }
+
+        Console.Write("Enter value to find: ");
+        int x = Convert.ToInt32(Console.ReadLine());
+
+        int result = Exists(array, rows, cols, x);
+
+        Console.WriteLine(result == 1 ? "yes" : "no");
+    }
+
+    static int Exists(int[,] array, int rows, int cols, int x)
+    {
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                if (array[i, j] == x)
+                {
+                    return 1;
+                }
+            }
+        }
+
+        return 0;
+    }
+}
+
+ITEM 4 : Even-ing
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.Write("Enter number of rows: ");
+        int rows = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter number of columns: ");
+        int cols = Convert.ToInt32(Console.ReadLine());
+
+        int[,] array = new int[rows, cols];
+
+        for (int i = 0; i < rows; i++)
+        {
+            string[] input = Console.ReadLine().Split(' ');
+
+            for (int j = 0; j < cols; j++)
+            {
+                array[i, j] = Convert.ToInt32(input[j]);
+            }
+        }
+
+        Console.WriteLine("Even Values:");
+        PrintEven(array, rows, cols);
+    }
+
+    static void PrintEven(int[,] array, int rows, int cols)
+    {
+        List<int> evenNumbers = new List<int>();
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                if (array[i, j] % 2 == 0)
+                {
+                    evenNumbers.Add(array[i, j]);
+                }
+            }
+        }
+
+        Console.WriteLine(string.Join(", ", evenNumbers));
+    }
+}
+
+ITEM 5 : Average Joe
+
+using System;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.Write("Enter number of rows: ");
+        int rows = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter number of columns: ");
+        int cols = Convert.ToInt32(Console.ReadLine());
+
+        float[,] array = new float[rows, cols];
+
+        for (int i = 0; i < rows; i++)
+        {
+            string[] input = Console.ReadLine().Split(' ');
+
+            for (int j = 0; j < cols; j++)
+            {
+                array[i, j] = float.Parse(input[j]);
+            }
+        }
+
+        Console.WriteLine($"Average: {Average(array, rows, cols):F2}");
+    }
+
+    static float Average(float[,] array, int rows, int cols)
+    {
+        float sum = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                sum += array[i, j];
+            }
+        }
+
+        return sum / (rows * cols);
+    }
+}
+
+ITEM 6 : Add Within Range (2D Array Version)
+
+using System;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.Write("Enter number of rows: ");
+        int rows = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter number of columns: ");
+        int cols = Convert.ToInt32(Console.ReadLine());
+
+        int[,] array = new int[rows, cols];
+
+        for (int i = 0; i < rows; i++)
+        {
+            string[] input = Console.ReadLine().Split(' ');
+
+            for (int j = 0; j < cols; j++)
+            {
+                array[i, j] = Convert.ToInt32(input[j]);
+            }
+        }
+
+        Console.Write("Sum starts at: ");
+        int start = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Sum ends at: ");
+        int end = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine($"Sum: {SumAtRange(array, rows, cols, start, end)}");
+    }
+
+    static int SumAtRange(int[,] array, int rows, int cols, int start, int end)
+    {
+        int sum = 0;
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                if (array[i, j] >= start && array[i, j] <= end)
+                {
+                    sum += array[i, j];
+                }
+            }
+        }
+
+        return sum;
+    }
+}
